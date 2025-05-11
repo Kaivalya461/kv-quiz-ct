@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "questionText": "What is the key advantage of using Java Streams?",
+    "options": [
+      "Direct memory manipulation",
+      "Improved code readability and performance",
+      "Simplified garbage collection",
+      "Enhanced security in threading"
+    ],
+    "correctAnswer": "Improved code readability and performance",
+    "category": "JAVA",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 2,
+    "questionText": "Which functional interface does not return any value?",
+    "options": [
+      "Supplier",
+      "Function",
+      "Consumer",
+      "Predicate"
+    ],
+    "correctAnswer": "Consumer",
+    "category": "JAVA",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 3,
+    "questionText": "What is the default scope of a Spring Bean?",
+    "options": [
+      "Prototype",
+      "Singleton",
+      "Request",
+      "Session"
+    ],
+    "correctAnswer": "Singleton",
+    "category": "JAVA",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 4,
+    "questionText": "Which keyword is used to define a constant in Java?",
+    "options": [
+      "final",
+      "const",
+      "static",
+      "immutable"
+    ],
+    "correctAnswer": "final",
+    "category": "JAVA",
+    "difficulty": "EASY"
+  },
+  {
+    "id": 5,
+    "questionText": "Which Java collection allows duplicate keys?",
+    "options": [
+      "Set",
+      "Map",
+      "List",
+      "Queue"
+    ],
+    "correctAnswer": "Map",
+    "category": "JAVA",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 6,
+    "questionText": "What does the 'volatile' keyword do in Java?",
+    "options": [
+      "Ensures visibility of changes across threads",
+      "Locks a variable for exclusive access",
+      "Prevents garbage collection",
+      "Marks an object as immutable"
+    ],
+    "correctAnswer": "Ensures visibility of changes across threads",
+    "category": "JAVA",
+    "difficulty": "ADVANCED"
+  },
+  {
+    "id": 7,
+    "questionText": "Which method is used to terminate a thread in Java?",
+    "options": [
+      "stop()",
+      "destroy()",
+      "terminate()",
+      "shutdown()"
+    ],
+    "correctAnswer": "stop()",
+    "category": "JAVA",
+    "difficulty": "ADVANCED"
+  },
+  {
+    "id": 8,
+    "questionText": "Which annotation is used to define a Spring Boot application?",
+    "options": [
+      "@SpringBootApplication",
+      "@SpringApp",
+      "@BootStart",
+      "@SpringConfig"
+    ],
+    "correctAnswer": "@SpringBootApplication",
+    "category": "JAVA",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 9,
+    "questionText": "Which data structure uses LIFO (Last In, First Out)?",
+    "options": [
+      "Queue",
+      "Stack",
+      "LinkedList",
+      "HashMap"
+    ],
+    "correctAnswer": "Stack",
+    "category": "JAVA",
+    "difficulty": "EASY"
+  },
+  {
+    "id": 10,
+    "questionText": "What is the default encoding scheme used in Java for Strings?",
+    "options": [
+      "UTF-8",
+      "ASCII",
+      "ISO-8859-1",
+      "Unicode"
+    ],
+    "correctAnswer": "UTF-8",
+    "category": "JAVA",
+    "difficulty": "ADVANCED"
+  },
+  {
+    "id": 11,
+    "questionText": "Which Java version introduced the Module System?",
+    "options": [
+      "Java 8",
+      "Java 9",
+      "Java 11",
+      "Java 14"
+    ],
+    "correctAnswer": "Java 9",
+    "category": "JAVA",
+    "difficulty": "ADVANCED"
+  },
+  {
+    "id": 12,
+    "questionText": "What is the purpose of 'super()' in Java?",
+    "options": [
+      "Calls the constructor of the superclass",
+      "Creates a new instance of a class",
+      "Calls the main method",
+      "Invokes garbage collection"
+    ],
+    "correctAnswer": "Calls the constructor of the superclass",
+    "category": "JAVA",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 13,
+    "questionText": "Which of the following collections is thread-safe?",
+    "options": [
+      "ArrayList",
+      "HashMap",
+      "CopyOnWriteArrayList",
+      "LinkedList"
+    ],
+    "correctAnswer": "CopyOnWriteArrayList",
+    "category": "JAVA",
+    "difficulty": "ADVANCED"
+  },
+  {
+    "id": 14,
+    "questionText": "Which Java concept allows defining methods without implementation?",
+    "options": [
+      "Interface",
+      "Abstract class",
+      "Final class",
+      "Static class"
+    ],
+    "correctAnswer": "Interface",
+    "category": "JAVA",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 15,
+    "questionText": "Which Java feature allows lambda expressions?",
+    "options": [
+      "Streams API",
+      "Functional Interfaces",
+      "JavaFX",
+      "Annotations"
+    ],
+    "correctAnswer": "Functional Interfaces",
+    "category": "JAVA",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 16,
+    "questionText": "Which directive is used to define a component in Angular?",
+    "options": [
+      "@Component",
+      "@Directive",
+      "@NgComponent",
+      "@Module"
+    ],
+    "correctAnswer": "@Component",
+    "category": "ANGULAR",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 17,
+    "questionText": "Which module is required for routing in Angular?",
+    "options": [
+      "RouterModule",
+      "NavigationModule",
+      "RoutingModule",
+      "PathModule"
+    ],
+    "correctAnswer": "RouterModule",
+    "category": "ANGULAR",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 18,
+    "questionText": "Which binding technique is used to update an element when a model changes?",
+    "options": [
+      "Interpolation",
+      "Event Binding",
+      "Two-Way Binding",
+      "Property Binding"
+    ],
+    "correctAnswer": "Two-Way Binding",
+    "category": "ANGULAR",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 19,
+    "questionText": "Which CLI command is used to generate a new Angular component?",
+    "options": [
+      "ng generate component",
+      "ng create component",
+      "angular new component",
+      "ng make component"
+    ],
+    "correctAnswer": "ng generate component",
+    "category": "ANGULAR",
+    "difficulty": "EASY"
+  },
+  {
+    "id": 20,
+    "questionText": "Which lifecycle hook is triggered when an Angular component is initialized?",
+    "options": [
+      "ngOnInit",
+      "ngOnLoad",
+      "ngInit",
+      "ngStart"
+    ],
+    "correctAnswer": "ngOnInit",
+    "category": "ANGULAR",
+    "difficulty": "INTERMEDIATE"
+  }
+]

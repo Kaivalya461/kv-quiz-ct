@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: kv-quiz
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: dummyMail
+#    password: dummyPass
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+
+kv:
+  #  access-token: 12345

@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "questionText": "What is the primary benefit of using Java Streams?",
+    "options": [
+      "Improved readability and performance optimization",
+      "Direct memory access",
+      "Simplified garbage collection",
+      "Enhanced security in multithreading"
+    ],
+    "correctAnswer": "Improved readability and performance optimization",
+    "category": "JAVA",
+    "difficulty": "INTERMEDIATE"
+  },
+  {
+    "id": 2,
+    "questionText": "Which of the following is NOT a valid functional interface in Java?",
+    "options": [
+      "Supplier",
+      "Consumer",
+      "Provider",
+      "Predicate"
+    ],
+    "correctAnswer": "Provider",
+    "category": "JAVA",
+    "difficulty": "ADVANCED"
+  }
+]
