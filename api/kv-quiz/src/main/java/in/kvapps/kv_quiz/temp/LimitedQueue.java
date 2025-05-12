@@ -26,4 +26,8 @@ public class LimitedQueue<T> {
     public void display() {
         System.out.println(deque);
     }
+
+    public Deque<T> getCopyOfAllElements() {
+        return new ArrayDeque<>(deque);
+    }
 }

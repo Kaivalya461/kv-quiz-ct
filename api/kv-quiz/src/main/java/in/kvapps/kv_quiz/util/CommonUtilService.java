@@ -10,20 +10,28 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @UtilityClass
 public class CommonUtilService {
     public long generateRandomLong() {
-        return (long) (Math.random() * 100000) + 1;
+        return (long) (Math.random() * 10000) + 1;
     }
 
-    public static String generateTestString(long id) {
+    public static String generateTestName(long id) {
         ZonedDateTime now = ZonedDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd'th'MMMuuuu-hh:mma");
         String formattedDate = now.format(formatter);
 
         return "Test" + id + "-" + formattedDate;
+    }
+
+    public static String generateTestId(long id) {
+        Random random = new Random();
+        char firstLetter = (char) ('A' + random.nextInt(26));
+        char secondLetter = (char) ('A' + random.nextInt(26));
+        return "" + firstLetter + secondLetter + "-" + id;
     }
 
     public static List<Question> getQuestionsForTest(List<Question> questionBank,
