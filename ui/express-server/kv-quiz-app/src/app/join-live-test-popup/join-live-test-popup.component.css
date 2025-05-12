@@ -1,0 +1,47 @@
+/* Blur Background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Blur Background */
+.modal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(1px); /* Applies blur effect */
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  z-index: -1;
+}
+
+/* Center the form */
+form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Submit button */
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}

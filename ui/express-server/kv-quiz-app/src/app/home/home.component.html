@@ -1,0 +1,46 @@
+<!-- Enter Your Name Functionality -->
+<div *ngIf="!userLoggedIn">
+    <form (ngSubmit)="onSubmit()">
+        <input type="text" id="username" [(ngModel)]="username" name="username" required placeholder="Enter your name">
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+<div class="quiz-action-container" *ngIf="userLoggedIn">
+    <div class="container text-center mt-5">
+        <h2>Select an Option</h2>
+
+        <div class="row justify-content-center mt-4">
+            <!-- Join Live MCQ Test -->
+            <div class="col-md-6 d-flex">
+                <div class="card shadow p-3 mb-5 bg-white rounded flex-fill">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Join Pre-Scheduled MCQ Test</h5>
+                        <p class="card-text">Enter an pre-scheduled Test session.</p>
+                        <!-- <button class="btn btn-success">Join Test</button> -->
+                        <div class="mt-auto">
+                            <button class="btn btn-success" (click)="joinLiveTest()">Join Test</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start New MCQ Test -->
+            <div class="col-md-6 d-flex">
+                <div class="card shadow p-3 mb-5 bg-white rounded flex-fill">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Start New MCQ Test (Coming Soon!)</h5>
+                        <p class="card-text">Begin a fresh test and challenge yourself.</p>
+                        <!-- <button class="btn btn-primary" disabled>Start Test</button> -->
+                        <div class="mt-auto">
+                            <button class="btn btn-primary" disabled>Start Test</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-join-live-test-popup [showPopup]="showJoinLivePopup" (closePopup)="showJoinLivePopup = false"></app-join-live-test-popup>

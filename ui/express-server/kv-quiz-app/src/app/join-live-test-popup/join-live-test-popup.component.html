@@ -1,0 +1,30 @@
+<!-- Simple Bootstrap Popup -->
+<div class="modal fade show d-block" *ngIf="showPopup" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Join Pre-Scheduled MCQ Test</h5>
+                <button type="button" class="btn-close" (click)="close()"></button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>Enter your Join Code</label>
+                        <input type="text" class="form-control" id="joinCode" [(ngModel)]="joinCode" name="joinCode"
+                            placeholder="e.g. 'ABC-1234'">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Join</button>
+                </form>
+            </div>
+
+            <!-- MCQ Test Session Details -->
+            <div *ngIf="showSessionDetails">
+                <hr class="bg-danger border-2 border-top border-danger" />
+                <div class="container mt-4">                   
+                    <p> {{mcqTestDisplayStatus}} {{mcqTestData.scheduledAt | date: 'dd MMM yyyy (EEEE), hh:mm a'}} </p>
+                    <app-countdown [futureDate]="mcqTestData.scheduledAt" *ngIf="showCountdown"></app-countdown>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
