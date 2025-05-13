@@ -1,0 +1,48 @@
+<div class="container mt-4" aria-disabled="true">
+    <div class="row">
+        <!-- Left Section: Test Details (20% Width) -->
+        <div class="col-md-3">
+            <div class="card p-3">
+                <h5>Details</h5>
+                <p><strong>Category:</strong> {{ testCategory }}</p>
+                <p><strong>Difficulty:</strong> {{ test.difficultyLevel }}</p>
+                <p><strong>Scheduled By:</strong> {{ test.scheduleBy }}</p>
+                <p><strong>Duration:</strong> {{ test.durationInMinutes }} minutes</p>
+            </div>
+            <div class="card p-3" *ngIf="showTimeRemaining">
+                <p><strong>Time Remaining:</strong> 
+                    <app-countdown [futureDate]="testFinishDateTime" (timesUpEvent)="submitTest()"></app-countdown>
+                </p>
+            </div>
+        </div>
+
+
+
+        <!-- Right Section: Questions (80% Width) -->
+        <div class="col-md-9">
+            <div class="card p-3" [class.blur]="isTestFinished">
+                <h5>Questions</h5>
+                <div *ngFor="let question of paginatedQuestions">
+                    <p><strong>Q{{ question.seqNum }}:</strong> {{ question.questionText }}</p>
+                    <ul>
+                        <li *ngFor="let option of question.options">
+                            <input type="radio" name="q{{ question.id }}" [(ngModel)]="userAnswers[question.id]"
+                                [value]="option" />
+                            {{ option }}
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Pagination Controls -->
+                <div class="pagination-controls">
+                    <button class="btn btn-secondary" (click)="previousPage()"
+                        [disabled]="currentPage === 1">Previous</button>
+                    <button class="btn btn-primary" (click)="nextPage()"
+                        [disabled]="currentPage * pageSize >= testQuestionDto.questions.length">Next</button>
+                    <button class="btn btn-success" *ngIf="currentPage * pageSize >= testQuestionDto.questions.length"
+                        (click)="submitTest()">Submit Test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

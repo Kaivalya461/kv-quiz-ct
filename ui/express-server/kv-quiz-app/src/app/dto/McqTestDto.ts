@@ -1,7 +1,7 @@
 import { Question } from "./QuestionDto";
 
 export class McqTestDto {
-  id: string = '';
+  id: string | null = null;
   testName: string = ''; // Example: Test001-10thMay2025-11:00AM
   questions: Question[] = [];
   durationInMinutes: number = 0;

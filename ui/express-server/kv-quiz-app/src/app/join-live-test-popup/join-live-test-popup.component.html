@@ -12,6 +12,11 @@
                         <label>Enter your Join Code</label>
                         <input type="text" class="form-control" id="joinCode" [(ngModel)]="joinCode" name="joinCode"
                             placeholder="e.g. 'ABC-1234'">
+                        <label for="testCategory">Select Test Category:</label>
+                        <select class="form-select" id="testCategory" name="testCategory" [(ngModel)]="selectedCategory">
+                          <option value="JAVA">JAVA</option>
+                          <option value="ANGULAR">ANGULAR</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Join</button>
                 </form>
@@ -20,7 +25,7 @@
             <!-- MCQ Test Session Details -->
             <div *ngIf="showSessionDetails">
                 <hr class="bg-danger border-2 border-top border-danger" />
-                <div class="container mt-4">                   
+                <div class="container mt-4">
                     <p> {{mcqTestDisplayStatus}} {{mcqTestData.scheduledAt | date: 'dd MMM yyyy (EEEE), hh:mm a'}} </p>
                     <app-countdown [futureDate]="mcqTestData.scheduledAt" *ngIf="showCountdown"></app-countdown>
                 </div>
