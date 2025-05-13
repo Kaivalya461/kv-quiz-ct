@@ -14,10 +14,8 @@ import java.util.List;
 public class KvTestDto {
     private String id;
     private String testName; //Ex: Test001-10thMay2025-11:00AM
-    private List<Question> questions;
     private int durationInMinutes;
     private TestDifficulty difficultyLevel; //easy, medium, hard
-    private TestCategory category; // java, angular
     private ZonedDateTime createdAt;
     private ZonedDateTime scheduledAt;
     private String scheduleBy; // Admin if scheduled for future time, LoggedIn UserName if started manually.

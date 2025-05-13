@@ -1,0 +1,162 @@
+{
+  "id": 5665,
+  "testId": "SGA-2214",
+  "questions": [
+    {
+      "id": 5,
+      "questionText": "Which Java collection allows duplicate keys?",
+      "options": [
+        "Set",
+        "Map",
+        "List",
+        "Queue"
+      ],
+      "correctAnswer": "Map",
+      "category": "JAVA",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 8,
+      "questionText": "Which annotation is used to define a Spring Boot application?",
+      "options": [
+        "@SpringBootApplication",
+        "@SpringApp",
+        "@BootStart",
+        "@SpringConfig"
+      ],
+      "correctAnswer": "@SpringBootApplication",
+      "category": "JAVA",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 15,
+      "questionText": "Which Java feature allows lambda expressions?",
+      "options": [
+        "Streams API",
+        "Functional Interfaces",
+        "JavaFX",
+        "Annotations"
+      ],
+      "correctAnswer": "Functional Interfaces",
+      "category": "JAVA",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 1,
+      "questionText": "What is the key advantage of using Java Streams?",
+      "options": [
+        "Direct memory manipulation",
+        "Improved code readability and performance",
+        "Simplified garbage collection",
+        "Enhanced security in threading"
+      ],
+      "correctAnswer": "Improved code readability and performance",
+      "category": "JAVA",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 14,
+      "questionText": "Which Java concept allows defining methods without implementation?",
+      "options": [
+        "Interface",
+        "Abstract class",
+        "Final class",
+        "Static class"
+      ],
+      "correctAnswer": "Interface",
+      "category": "JAVA",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 3,
+      "questionText": "What is the default scope of a Spring Bean?",
+      "options": [
+        "Prototype",
+        "Singleton",
+        "Request",
+        "Session"
+      ],
+      "correctAnswer": "Singleton",
+      "category": "JAVA",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 2,
+      "questionText": "Which functional interface does not return any value?",
+      "options": [
+        "Supplier",
+        "Function",
+        "Consumer",
+        "Predicate"
+      ],
+      "correctAnswer": "Consumer",
+      "category": "JAVA",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 12,
+      "questionText": "What is the purpose of 'super()' in Java?",
+      "options": [
+        "Calls the constructor of the superclass",
+        "Creates a new instance of a class",
+        "Calls the main method",
+        "Invokes garbage collection"
+      ],
+      "correctAnswer": "Calls the constructor of the superclass",
+      "category": "JAVA",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 18,
+      "questionText": "Which binding technique is used to update an element when a model changes?",
+      "options": [
+        "Interpolation",
+        "Event Binding",
+        "Two-Way Binding",
+        "Property Binding"
+      ],
+      "correctAnswer": "Two-Way Binding",
+      "category": "ANGULAR",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 16,
+      "questionText": "Which directive is used to define a component in Angular?",
+      "options": [
+        "@Component",
+        "@Directive",
+        "@NgComponent",
+        "@Module"
+      ],
+      "correctAnswer": "@Component",
+      "category": "ANGULAR",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 17,
+      "questionText": "Which module is required for routing in Angular?",
+      "options": [
+        "RouterModule",
+        "NavigationModule",
+        "RoutingModule",
+        "PathModule"
+      ],
+      "correctAnswer": "RouterModule",
+      "category": "ANGULAR",
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": 20,
+      "questionText": "Which lifecycle hook is triggered when an Angular component is initialized?",
+      "options": [
+        "ngOnInit",
+        "ngOnLoad",
+        "ngInit",
+        "ngStart"
+      ],
+      "correctAnswer": "ngOnInit",
+      "category": "ANGULAR",
+      "difficulty": "INTERMEDIATE"
+    }
+  ]
+}

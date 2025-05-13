@@ -26,10 +26,10 @@ public class KvQuizApplication {
 		JavaTimeModule module = new JavaTimeModule();
 
 		// Define the default ZonedDateTime format
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a z");
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a z");
 
 		// Use the custom serializer with the defined format
-		module.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer(formatter));
+//		module.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer(formatter));
 
 		// Register the module in the ObjectMapper
 		objectMapper.registerModule(module);

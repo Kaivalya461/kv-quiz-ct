@@ -3,6 +3,7 @@ package in.kvapps.kv_quiz.config;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import in.kvapps.kv_quiz.model.KvTest;
+import in.kvapps.kv_quiz.model.KvTestQuestion;
 import in.kvapps.kv_quiz.model.Question;
 import in.kvapps.kv_quiz.repository.KvTestRepository;
 import in.kvapps.kv_quiz.service.QuestionBankService;
@@ -36,10 +37,18 @@ public class LocalDataLoad {
 
         // Create a Sample MCQTest
         try {
-            KvTest mcqTest = parseJsonForMcqTest("src/main/resources/test/sample-mcq-test.json");
+            KvTest mcqTest = parseJsonForMcqTest("src/main/resources/test/test-detail.json");
             TempDatabase.kvTests.add(mcqTest);
         } catch (IOException e) {
             log.error("Error while Sample MCQTest at LocalDataLoad::loadQuestions, ErrorMessage: {}", e.getMessage(), e);
+        }
+
+        // Create a Sample Test Questions for SGA-2214 TestID.
+        try {
+            KvTestQuestion mcqTestQuestion = parseJsonForMcqTestQuestions("src/main/resources/test/test-question-java-angular.json");
+            TempDatabase.kvTestQuestions.add(mcqTestQuestion);
+        } catch (IOException e) {
+            log.error("Error while Test Questions for SGA-2214 TestID at LocalDataLoad::loadQuestions, ErrorMessage: {}", e.getMessage(), e);
         }
 
     }
@@ -49,6 +58,10 @@ public class LocalDataLoad {
     }
 
     public KvTest parseJsonForMcqTest(String filePath) throws IOException {
+        return objectMapper.readValue(new File(filePath), new TypeReference<>() {});
+    }
+
+    public KvTestQuestion parseJsonForMcqTestQuestions(String filePath) throws IOException {
         return objectMapper.readValue(new File(filePath), new TypeReference<>() {});
     }
 }

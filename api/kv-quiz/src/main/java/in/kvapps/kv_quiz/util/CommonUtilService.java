@@ -31,7 +31,8 @@ public class CommonUtilService {
         Random random = new Random();
         char firstLetter = (char) ('A' + random.nextInt(26));
         char secondLetter = (char) ('A' + random.nextInt(26));
-        return "" + firstLetter + secondLetter + "-" + id;
+        char thirdLetter = (char) ('A' + random.nextInt(26));
+        return "" + firstLetter + secondLetter + thirdLetter + "-" + id;
     }
 
     public static List<Question> getQuestionsForTest(List<Question> questionBank,
