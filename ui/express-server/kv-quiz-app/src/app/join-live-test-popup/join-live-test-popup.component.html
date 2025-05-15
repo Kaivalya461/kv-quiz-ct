@@ -18,17 +18,26 @@
                           <option value="ANGULAR">ANGULAR</option>
                         </select>
                     </div>
+
+                    <!-- Test session Search Status-->
+                    <p> {{mcqTestDisplayStatus}} {{mcqTestData.scheduledAt | date: 'dd MMM yyyy (EEEE), hh:mm a'}} </p>
+
+                    <!-- MCQ Test Session Details -->
+                    <div class="container mt-4" aria-disabled="true" *ngIf="showSessionDetails">
+                        <div class="row">
+                            <!-- Left Section: Test Details (20% Width) -->
+                            <div class="col-md-0">
+                                <div class="card p-3">
+                                    <h5>Session Details</h5>
+                                    <p><strong>Test Id:</strong> {{ joinCode }}</p>
+                                    <p><strong>Come Back In: </strong> <app-countdown [futureDate]="mcqTestData.scheduledAt"
+                                            *ngIf="showCountdown" style="display: inline-block;"></app-countdown> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">Join</button>
                 </form>
-            </div>
-
-            <!-- MCQ Test Session Details -->
-            <div *ngIf="showSessionDetails">
-                <hr class="bg-danger border-2 border-top border-danger" />
-                <div class="container mt-4">
-                    <p> {{mcqTestDisplayStatus}} {{mcqTestData.scheduledAt | date: 'dd MMM yyyy (EEEE), hh:mm a'}} </p>
-                    <app-countdown [futureDate]="mcqTestData.scheduledAt" *ngIf="showCountdown"></app-countdown>
-                </div>
             </div>
         </div>
     </div>

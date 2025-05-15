@@ -1,9 +1,25 @@
 <!-- Enter Your Name Functionality -->
-<div *ngIf="!userLoggedIn">
-    <form (ngSubmit)="onSubmit()">
-        <input type="text" id="username" [(ngModel)]="username" name="username" required placeholder="Enter your name">
-        <button type="submit">Submit</button>
-    </form>
+<!-- Simple Bootstrap Popup -->
+<div class="modal fade show d-block" *ngIf="!userLoggedIn" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                Welcome User!
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <input type="text" id="username" [(ngModel)]="username" name="username" required placeholder="Enter your name" class="form-control" formControlName="textInput">
+                        <div *ngIf="myForm.controls['textInput'].invalid && myForm.controls['textInput'].touched"
+                            class="text-danger">
+                            This field cannot be empty.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -31,7 +47,7 @@
                 <div class="card shadow p-3 mb-5 bg-white rounded flex-fill">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Start New MCQ Test (Coming Soon!)</h5>
-                        <p class="card-text">Begin a fresh test and challenge yourself.</p>
+                        <p class="card-text">Create custom MCQ Tests and challenge yourself.</p>
                         <!-- <button class="btn btn-primary" disabled>Start Test</button> -->
                         <div class="mt-auto">
                             <button class="btn btn-primary" disabled>Start Test</button>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../service/user.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { JoinLiveTestPopupComponent } from '../join-live-test-popup/join-live-test-popup.component';
 import { Router } from '@angular/router';
@@ -10,12 +10,17 @@ import { Router } from '@angular/router';
   imports: [
     FormsModule,
     CommonModule,
-    JoinLiveTestPopupComponent
+    JoinLiveTestPopupComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  myForm = new FormGroup({
+    textInput: new FormControl('', [Validators.required])
+  });
+
   username: string = '';
   userLoggedIn: boolean = false;
   showJoinLivePopup = false;
