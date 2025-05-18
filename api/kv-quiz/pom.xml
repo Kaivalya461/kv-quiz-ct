@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>in.kvapps</groupId>
 	<artifactId>kv-quiz</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>kv-quiz</name>
 	<description>APIs to fetch Quiz Data, McqTest Details, QuestionBank Upload, ResultData, Submit Test</description>
 	<url/>
