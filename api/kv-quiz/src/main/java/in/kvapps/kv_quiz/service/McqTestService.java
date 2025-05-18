@@ -29,7 +29,7 @@ public class McqTestService {
     @Autowired private KvTestRepository mcqTestRepository;
     @Autowired private KvTestQuestionRepository testQuestionRepository;
 
-    public String createMcqTest(CreateMcqTestDto request) {
+    public KvTest createMcqTest(CreateMcqTestDto request) {
         long id = CommonUtilService.generateRandomLong();
         String testId = CommonUtilService.generateTestId(id);
 
@@ -65,7 +65,7 @@ public class McqTestService {
 
         mcqTestRepository.save(kvTest);
 
-        return "Test Created Successfully";
+        return kvTest;
     }
 
     public KvTestDto getTestDetails(String testId) {

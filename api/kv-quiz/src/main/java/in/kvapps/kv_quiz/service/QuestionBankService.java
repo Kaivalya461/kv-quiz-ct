@@ -50,4 +50,16 @@ public class QuestionBankService {
             return Collections.emptyList();
         }
     }
+
+    public String clearQuestionBankData(String accessToken) {
+        if (!appConfig.getAccessToken().equals(accessToken)) {
+            log.error("Invalid AccessToken received, TokenReceived: {}", accessToken);
+            return "Invalid Access Token";
+        }
+
+        TempDatabase.questionBank.clear();
+
+        return "Successfully cleared the Question Bank Data";
+    }
+
 }

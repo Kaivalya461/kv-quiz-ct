@@ -2,6 +2,7 @@ package in.kvapps.kv_quiz.controller;
 
 import in.kvapps.kv_quiz.dto.CreateMcqTestDto;
 import in.kvapps.kv_quiz.dto.KvTestDto;
+import in.kvapps.kv_quiz.model.KvTest;
 import in.kvapps.kv_quiz.service.McqTestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class McqTestController {
     @Autowired private McqTestService mcqTestService;
 
     @PostMapping
-    public ResponseEntity<String> createMcqTest(@RequestBody CreateMcqTestDto requestBody) {
+    public ResponseEntity<KvTest> createMcqTest(@RequestBody CreateMcqTestDto requestBody) {
         return ResponseEntity.ok(mcqTestService.createMcqTest(requestBody));
     }
 
