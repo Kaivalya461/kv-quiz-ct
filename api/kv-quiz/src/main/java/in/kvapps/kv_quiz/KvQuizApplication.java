@@ -3,15 +3,13 @@ package in.kvapps.kv_quiz;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.datatype.jsr310.ser.ZonedDateTimeSerializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
 @SpringBootApplication
+@EnableWebSocket
 public class KvQuizApplication {
 
 	public static void main(String[] args) {
