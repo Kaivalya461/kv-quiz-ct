@@ -45,8 +45,13 @@ public class JavaCodeExecutor implements KvCodeExecutor {
 
             deleteDirectory(tempDir);
 
-            response.setOutput(tempResponse.getOutput());
-            response.setError(tempResponse.getError());
+
+            if (tempResponse.getOutput().length() < 3000) {
+                response.setOutput(tempResponse.getOutput());
+                response.setError(tempResponse.getError());
+            } else {
+                response.setError("Output length exceeded the character limit");
+            }
             return response;
 
         } catch (Exception e) {

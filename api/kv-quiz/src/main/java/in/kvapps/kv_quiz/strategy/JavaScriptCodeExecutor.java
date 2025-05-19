@@ -54,7 +54,11 @@ public class JavaScriptCodeExecutor implements KvCodeExecutor {
         // Get captured output
         String capturedOutput = outputStream.toString();
 
-        response.setOutput(capturedOutput);
+        if (capturedOutput.length() < 3000) {
+            response.setOutput(capturedOutput);
+        } else {
+            response.setError("Output length exceeded the character limit");
+        }
         return response;
     }
 }
