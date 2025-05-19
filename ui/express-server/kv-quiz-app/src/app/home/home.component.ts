@@ -3,7 +3,6 @@ import { UserService } from '../service/user.service';
 import { FormsModule, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { JoinLiveTestPopupComponent } from '../join-live-test-popup/join-live-test-popup.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -25,15 +24,26 @@ export class HomeComponent {
   userLoggedIn: boolean = false;
   showJoinLivePopup = false;
 
-  constructor(private userService: UserService,
-    private router: Router
+  constructor(private userService: UserService
   ) {}
+
+  ngOnInit(): void {
+    const savedUsername = sessionStorage.getItem('username');
+    if (savedUsername != null || savedUsername != undefined) {
+      //already logged-in
+      this.username = savedUsername;
+      this.onSubmit();
+    }
+  }
 
   onSubmit() {
     this.userService.setUsername(this.username);
     this.userService.userLoggedIn$.subscribe(response => {
       this.userLoggedIn = response;
     })
+
+    // Reset 'Enter your name' Form Fields
+    this.username = '';
   }
 
   joinLiveTest() {

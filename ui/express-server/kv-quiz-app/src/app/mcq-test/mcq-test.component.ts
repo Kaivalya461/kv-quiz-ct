@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { McqTestDto } from '../dto/McqTestDto';
 import { Question } from '../dto/QuestionDto';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LeaderboardService } from '../service/leaderboard.service';
 import { UserService } from '../service/user.service';
@@ -10,6 +10,8 @@ import { TestQuestionService } from '../service/test-question.service';
 import { McqTestService } from '../service/mcq-test.service';
 import { TestQuestionDto } from '../dto/TestQuestionDto';
 import { CountdownComponent } from '../countdown/countdown.component';
+import { ProgressService } from '../service/progress.service';
+import { UserProgressDto } from '../dto/UserProgressDto';
 
 @Component({
   selector: 'app-mcq-test',
@@ -24,6 +26,8 @@ import { CountdownComponent } from '../countdown/countdown.component';
 export class McqTestComponent {
   test: McqTestDto = new McqTestDto();
   testQuestionDto: TestQuestionDto = new TestQuestionDto();
+  totalQuestionsCount = 0;
+  mcqTestId: any;
 
   pageSize = 5; // Show 5 questions per page
   currentPage = 1;
@@ -32,6 +36,10 @@ export class McqTestComponent {
   userAnswers: Record<number, string> = {};
   @Output() isTestFinishedEvent = new EventEmitter<boolean>();
   isTestFinished: boolean = false;
+  correctAnswers: number = 0;
+  totalQuestions: number = 0;
+  userFinalScore: number = 0;
+
   username: string = '';
   testCategory: string | null = '';
 
@@ -43,17 +51,21 @@ export class McqTestComponent {
     private testQuestionService: TestQuestionService,
     private route: ActivatedRoute,
     private leaderboardService: LeaderboardService,
-    private userService: UserService
+    private userService: UserService,
+    private progressService: ProgressService,
+    private router: Router
   ) {
 
   }
 
   ngOnInit(): void {
-    const mcqTestId = this.route.snapshot.queryParamMap.get('mcq-test-id');
+    this.mcqTestId = this.route.snapshot.queryParamMap.get('mcq-test-id');
+    const mcqTestId = this.mcqTestId;
     this.testCategory = this.route.snapshot.queryParamMap.get('test-category');
     if (this.test.id == null && mcqTestId != null && this.testCategory != null) {
       this.testQuestionService.getQuestionsForTest(mcqTestId, this.testCategory).subscribe(data => {
         this.testQuestionDto = data;
+        this.totalQuestionsCount = data.questions.length;
         this.updatePagination();
       });
     }
@@ -66,9 +78,14 @@ export class McqTestComponent {
         this.testFinishDateTime = this.getTestFinishTime(this.test.durationInMinutes);
         this.showTimeRemaining = true;
       });
+
+      // Update testInProgress flag as true
+      this.progressService.testStart(mcqTestId);
     }
 
     this.userService.username$.subscribe(name => this.username = name);
+
+
   }
 
   updatePagination() {
@@ -81,6 +98,7 @@ export class McqTestComponent {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.updatePagination();
+      this.sendTestUpdateEvent();
     }
   }
 
@@ -88,23 +106,22 @@ export class McqTestComponent {
     if (this.currentPage * this.pageSize < this.testQuestionDto.questions.length) {
       this.currentPage++;
       this.updatePagination();
+      this.sendTestUpdateEvent();
     }
   }
 
   submitTest() {
-    let correctAnswers = 0;
-
     this.testQuestionDto.questions.forEach((question) => {
       if (this.userAnswers[question.id] === question.correctAnswer) {
-        correctAnswers++;
+        this.correctAnswers++;
       }
     });
 
-    const totalQuestions = this.testQuestionDto.questions.length;
-    const scorePercentage = (correctAnswers / totalQuestions) * 100;
+    this.totalQuestions = this.testQuestionDto.questions.length;
+    this.userFinalScore = (this.correctAnswers / this.totalQuestions) * 100;;
 
     // Update leaderboard
-    this.leaderboardService.addUserResult(this.username, scorePercentage);
+    this.leaderboardService.addUserResult(this.username, this.userFinalScore);
     // Disable questions section
     this.isTestFinished = true;
     this.isTestFinishedEvent.emit(true); // Emit new value to parent
@@ -112,12 +129,56 @@ export class McqTestComponent {
     // Time Remaining
     this.showTimeRemaining = false;
 
-    alert(`Test Submitted! 🎉\nYour Score: ${correctAnswers}/${totalQuestions} (${scorePercentage.toFixed(2)}%)`);
+    // Update for Real-Time events
+    this.sendTestCompletionEvent();
+
+    // Update testInProgress flag as false
+    this.progressService.testFinish();
+
+    // Wait for few seconds, and redirect to /leaderboard
+    setTimeout(() => {
+      this.navigateToLeaderboardPage(this.mcqTestId);
+    }, 5000);
+
+    alert(`Test Submitted! 🎉\nYour Score: ${this.correctAnswers}/${this.totalQuestions} (${this.userFinalScore.toFixed(2)}%)`);
   }
 
   getTestFinishTime(minutesAhead: number) {
     const currentDateTime = new Date();
     currentDateTime.setMinutes(currentDateTime.getMinutes() + minutesAhead);
     return currentDateTime;
+  }
+
+  getCurrentUserProgress(): number {
+    const answeredQuestionsCount = Object.keys(this.userAnswers).length;
+    return ( answeredQuestionsCount / this.totalQuestionsCount ) * 100;
+  }
+
+  sendTestUpdateEvent() {
+    const userProgressDto = new UserProgressDto(
+      this.username,
+      this.getCurrentUserProgress(),
+      false,
+      Object.keys(this.userAnswers).length,
+      this.correctAnswers,
+      this.totalQuestions
+    );
+    this.progressService.sendMessage(this.test.id!, userProgressDto);
+  }
+
+  sendTestCompletionEvent() {
+    const userProgressDto = new UserProgressDto(
+      this.username,
+      this.getCurrentUserProgress(),
+      true,
+      Object.keys(this.userAnswers).length,
+      this.correctAnswers,
+      this.totalQuestions
+    );
+    this.progressService.sendMessage(this.test.id!, userProgressDto);
+  }
+
+  navigateToLeaderboardPage(mcqTestId: string): void {
+    this.router.navigate(['/leaderboard'], { queryParams: { 'mcq-test-id': mcqTestId, 'test-type': 'live-mcq'} });
   }
 }

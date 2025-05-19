@@ -46,18 +46,31 @@ export class JoinLiveTestPopupComponent {
 
     this.mcqTestService.getMcqTestDetails(this.joinCode).subscribe(response => {
       if(response.id == null) {
+        // No Test Found
         this.mcqTestDisplayStatus = 'Test Session Not Found';
         return;
-      } else if (response.scheduledAt != undefined && this.isPastDateTime(response.scheduledAt)) {
-        console.log("Navigating to Live-Session");
-        this.navigateToLiveSession(this.joinCode);
+      } else if (response.scheduledAt != undefined) {
+          if (this.isFutureDateTime(response.scheduledAt)) {
+            // Future Time
+            this.showSessionDetails = true;
+            this.mcqTestDisplayStatus = 'Your session is scheduled at ';
+
+            this.showCountdown = true;
+            this.mcqTestData = response;
+            return;
+          } else if (this.isPastDateTime(response.scheduledAt)
+            && this.inEligibleTestTime(response.scheduledAt, response.durationInMinutes)) {
+            console.log("Navigating to Live-Session");
+            this.navigateToLiveSession(this.joinCode);
+            return;
+          } else {
+            this.showSessionDetails = true;
+            this.mcqTestDisplayStatus = 'Your Session is Expired';
+            return;
+          }
       }
   
-      this.showSessionDetails = true;
-      this.mcqTestDisplayStatus = 'Your session is scheduled at ';
-      
-      this.showCountdown = true;
-      this.mcqTestData = response;
+
     });
   }
 
@@ -74,5 +87,28 @@ export class JoinLiveTestPopupComponent {
 
     // Convert both dates to comparable timestamps
     return inputDate.getTime() < currentDate.getTime();
+  }
+
+  isFutureDateTime(inputUtc: Date) {
+    // Parse input UTC datetime
+    const inputDate = new Date(inputUtc);
+
+    // Get current datetime in host machine's timezone
+    const currentDate = new Date();
+
+    // Convert both dates to comparable timestamps
+    return inputDate.getTime() > currentDate.getTime();
+  }
+
+  inEligibleTestTime(inputUtc: Date, testDuration: number) {
+    // Parse input UTC datetime
+    const testEndDateTime = new Date(inputUtc);
+    testEndDateTime.setMinutes(testEndDateTime.getMinutes() + testDuration);
+
+    // Get current datetime in host machine's timezone
+    const currentDate = new Date();
+
+    // Convert both dates to comparable timestamps
+    return currentDate.getTime() < testEndDateTime.getTime();
   }
 }

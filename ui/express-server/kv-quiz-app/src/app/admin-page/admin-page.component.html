@@ -1,0 +1,15 @@
+<p>admin-page works!</p>
+
+
+<!-- Test Progress using TestId -->
+<div>
+    <form (ngSubmit)="testProgressFormSubmit()">
+        <div class="mb-3">
+            <input type="text" id="testId" [(ngModel)]="testId" name="testId" required
+                placeholder="Enter Test ID">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <app-progress *ngIf="isSubmitted" [mcqTestId]="testId"></app-progress>
+</div>

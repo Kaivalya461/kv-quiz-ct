@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { McqTestDto } from '../dto/McqTestDto';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class McqTestService {
   // domainBaseUrl: string = "https://kv-quiz-api.kvapps.in";
-  domainBaseUrl: string = "http://localhost:8080";
+  domainBaseUrl: string = environment.apiBaseUrl;
   url:string = this.domainBaseUrl;
 
   constructor(private http: HttpClient) { }

@@ -1,3 +1,5 @@
-<p>live-session works!</p>
+<!-- Race Track (Real Time Updates of all the user) -->
+<app-progress [mcqTestId]="mcqTestId"></app-progress>
+
 <app-mcq-test (isTestFinishedEvent)="updateTestDetails()"></app-mcq-test>
-<app-leaderboard *ngIf="showLeaderboard"></app-leaderboard>
+<!-- <app-leaderboard *ngIf="showLeaderboard"></app-leaderboard> -->

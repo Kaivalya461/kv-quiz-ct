@@ -6,5 +6,8 @@
     <div class="d-flex ms-auto">
       <span class="navbar-text">Username: {{ username }}</span>
     </div>
+    <button class="btn btn-light btn-sm change-user-btn" *ngIf="userLoggedIn && !testInProgress" (click)="changeUser()">
+      Change User
+    </button>
   </div>
 </nav>

@@ -19,6 +19,15 @@ export class UserService {
 
     // Mark as LoggedIn as true.
     this.userLoggedInSource.next(true);
+    sessionStorage.setItem('username', name);
+  }
+
+  clearUsername() {
+    this.usernameSource.next('No Info Available');
+
+    // Mark as LoggedIn as true.
+    this.userLoggedInSource.next(false);
+    sessionStorage.removeItem('username');
   }
 
 }

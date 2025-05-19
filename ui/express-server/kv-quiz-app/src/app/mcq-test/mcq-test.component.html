@@ -14,9 +14,11 @@
                     <app-countdown [futureDate]="testFinishDateTime" (timesUpEvent)="submitTest()"></app-countdown>
                 </p>
             </div>
+            <div class="card score-card p-3" *ngIf="isTestFinished">
+                <h5>Your Score:</h5>
+                {{correctAnswers}}/{{totalQuestions}} ({{ userFinalScore }}%)
+            </div>
         </div>
-
-
 
         <!-- Right Section: Questions (80% Width) -->
         <div class="col-md-9">
@@ -27,7 +29,7 @@
                     <ul>
                         <li *ngFor="let option of question.options">
                             <input type="radio" name="q{{ question.id }}" [(ngModel)]="userAnswers[question.id]"
-                                [value]="option" />
+                                [value]="option" (change)="sendTestUpdateEvent()"/>
                             {{ option }}
                         </li>
                     </ul>

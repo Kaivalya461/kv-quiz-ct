@@ -20,16 +20,15 @@
                     </div>
 
                     <!-- Test session Search Status-->
-                    <p> {{mcqTestDisplayStatus}} {{mcqTestData.scheduledAt | date: 'dd MMM yyyy (EEEE), hh:mm a'}} </p>
+                    <p> <strong> {{mcqTestDisplayStatus}} {{mcqTestData.scheduledAt | date: 'dd MMM yyyy (EEEE), hh:mm a'}} </strong> </p>
 
                     <!-- MCQ Test Session Details -->
-                    <div class="container mt-4" aria-disabled="true" *ngIf="showSessionDetails">
+                    <div class="container mt-4" aria-disabled="true" *ngIf="showCountdown">
                         <div class="row">
                             <!-- Left Section: Test Details (20% Width) -->
                             <div class="col-md-0">
                                 <div class="card p-3">
-                                    <h5>Session Details</h5>
-                                    <p><strong>Test Id:</strong> {{ joinCode }}</p>
+                                    <!-- <p><strong>Test Id:</strong> {{ joinCode }}</p> -->
                                     <p><strong>Come Back In: </strong> <app-countdown [futureDate]="mcqTestData.scheduledAt"
                                             *ngIf="showCountdown" style="display: inline-block;"></app-countdown> </p>
                                 </div>

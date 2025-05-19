@@ -1,0 +1,42 @@
+<!-- Base Container
+<div>
+  <div *ngFor="let user of usersProgress">
+    <p>{{ user.name }}: </p>
+    <div class="progress">
+      <div class="progress-bar" [style.width.%]="user.progress" role="progressbar">
+        {{ user.progress }} %
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- Base Container -->
+<div class="container mt-4">
+  <div *ngFor="let user of usersProgress" class="d-flex align-items-center mb-3">
+
+    <!-- User Name -->
+    <span class="fw-bold text-primary me-3" style="min-width: 150px;">{{ user.name }}</span>
+
+    <!-- Progress Bar -->
+    <div class="progress flex-grow-1" style="height: 25px;">
+      <!-- <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" [style.width.%]="user.progress"
+        role="progressbar">
+        {{ user.progress }} %
+      </div> -->
+
+      <div class="progress-bar progress__fill bg-success progress-bar-striped progress-bar-animated"
+        [ngStyle]="{ 'width': user.progress + '%' }" role="progressbar">
+        {{ user.progress }} %
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="progress">
+    <div class="progress-bar progress__fill bg-success"
+         [ngStyle]="{ 'width': progressValue + '%' }"
+         role="progressbar">
+      {{ progressValue }}%
+    </div>
+  </div> -->
+</div>

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { TestQuestionDto } from '../dto/TestQuestionDto';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestQuestionService {
-  // domainBaseUrl: string = "https://kv-quiz-api.kvapps.in";
-  domainBaseUrl: string = "http://localhost:8080";
+  // domainBaseUrl: string = "http://localhost:8080";
+  domainBaseUrl: string = environment.apiBaseUrl;
   url:string = this.domainBaseUrl;
 
   constructor(private http: HttpClient) { }
