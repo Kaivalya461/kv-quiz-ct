@@ -44,6 +44,8 @@ export class JoinLiveTestPopupComponent {
     this.mcqTestData = new McqTestDto();
     this.showCountdown = false;
 
+    this.joinCode = this.joinCode.toUpperCase();
+
     this.mcqTestService.getMcqTestDetails(this.joinCode).subscribe(response => {
       if(response.id == null) {
         // No Test Found
