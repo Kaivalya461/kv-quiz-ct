@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { McqTestDto } from '../dto/McqTestDto';
 import { Question } from '../dto/QuestionDto';
 import { CommonModule } from '@angular/common';
@@ -12,13 +12,15 @@ import { TestQuestionDto } from '../dto/TestQuestionDto';
 import { CountdownComponent } from '../countdown/countdown.component';
 import { ProgressService } from '../service/progress.service';
 import { UserProgressDto } from '../dto/UserProgressDto';
+import { KvCodeEditorComponent } from '../kv-code-editor/kv-code-editor.component';
 
 @Component({
   selector: 'app-mcq-test',
   imports: [
     CommonModule,
     FormsModule,
-    CountdownComponent
+    CountdownComponent,
+    KvCodeEditorComponent
   ],
   templateUrl: './mcq-test.component.html',
   styleUrl: './mcq-test.component.css'
@@ -45,6 +47,11 @@ export class McqTestComponent {
 
   testFinishDateTime: Date | undefined;
   showTimeRemaining: boolean = false;
+
+  codingQuestion: string = 'Reverse a string'; // Temporarily hardcoding
+
+  isCodePanelCollapsed: boolean = true;
+  mcqPanelCollapsed: boolean = true;
 
   constructor(
     private mcqTestDetailService: McqTestService,
@@ -181,4 +188,13 @@ export class McqTestComponent {
   navigateToLeaderboardPage(mcqTestId: string): void {
     this.router.navigate(['/leaderboard'], { queryParams: { 'mcq-test-id': mcqTestId, 'test-type': 'live-mcq'} });
   }
+
+  toggleCodePanel() {
+    this.isCodePanelCollapsed = !this.isCodePanelCollapsed;
+  }
+
+  toggleMcqCollapse() {
+    this.mcqPanelCollapsed = !this.mcqPanelCollapsed;
+  }
+
 }

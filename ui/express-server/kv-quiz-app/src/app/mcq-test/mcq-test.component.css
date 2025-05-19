@@ -19,3 +19,15 @@
 .score-card {
   background-color: rgb(0, 174, 255);
 }
+
+.blurred {
+  filter: blur(2px);
+  height: 50%;
+  transition: all 0.5s ease-in-out;
+}
+
+.horizontal-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}

@@ -1,0 +1,36 @@
+
+<div class="container mt-5" aria-disabled="true">
+    <div class="row">
+        <!-- Left - Code Editor (80% Width) -->
+        <div class="col-md-9">
+            <div class="card editor-container p-3">
+                <div class="editor-header-container" style="display: flex">
+                    <h5>Code Editor</h5>
+                    <div class="spacer"></div> <!-- Spacer to push the second dropdown -->
+                    <select class="form-select lang-dropdown" id="testCategory" name="codeLang" [(ngModel)]="selectedLang" (change)="onLangSelectionChange($event)">
+                        <option value="JAVA">Java</option>
+                        <option value="JS">Javascript</option>
+                    </select>
+                </div>
+
+                <div class="kv-editor-container" style="height: 500px">
+                    <ngx-monaco-editor class="my-code-editor" style="height: 100%" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section: Code Actions and Output Window (20% Width) -->
+        <div class="col-md-3">
+            <div class="card p-3">
+                <h5> Actions: </h5>
+                <button class="btn btn-primary" (click)="executeCode()"> Execute Code </button>
+        
+            </div>
+            <div class="card score-card p-3" style="height: 300px">
+                <h5>Code Output:</h5>
+                <pre>{{ codeOutput }}</pre>
+            </div>
+        </div>
+        <!-- <div> {{ formattedCode }}</div> -->
+    </div>
+</div>

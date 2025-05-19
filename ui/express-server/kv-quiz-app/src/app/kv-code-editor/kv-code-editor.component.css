@@ -1,0 +1,23 @@
+.kv-editor-container {
+    /* border: 2px solid rebeccapurple; */
+    margin-top: 0.5rem;
+}
+
+.editor-header-container {
+    display: flex;
+    gap: 10px;
+}
+
+.lang-dropdown {
+    width: 10rem;
+    position: relative;
+    display: inline-block;
+}
+
+.spacer {
+    flex-grow: 1; /* Pushes the second dropdown to the right */
+}
+
+.editor-container {
+    background-color: rgb(175, 175, 175);
+}

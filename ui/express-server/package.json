@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "bootstrap": "^5.3.6",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "monaco-editor": "^0.52.2",
+    "ngx-monaco-editor-v2": "^19.0.2"
   }
 }
