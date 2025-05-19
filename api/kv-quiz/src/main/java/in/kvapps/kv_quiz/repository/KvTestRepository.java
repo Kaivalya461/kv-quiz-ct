@@ -5,6 +5,7 @@ import in.kvapps.kv_quiz.temp.TempDatabase;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -19,5 +20,9 @@ public class KvTestRepository {
                 .stream()
                 .filter(x -> testId.equals(x.getId()))
                 .findFirst();
+    }
+
+    public List<KvTest> findAll() {
+        return new ArrayList<>(TempDatabase.kvTests.getCopyOfAllElements());
     }
 }

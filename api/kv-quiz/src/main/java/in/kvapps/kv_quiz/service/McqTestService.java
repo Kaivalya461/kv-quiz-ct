@@ -80,4 +80,18 @@ public class McqTestService {
 
         return response;
     }
+
+    public List<KvTestDto> getAllTestDetails() {
+        var kvTests = mcqTestRepository.findAll();
+        List<KvTestDto> kvTestDtoList = new ArrayList<>();
+
+        kvTests
+                .forEach(source -> {
+                    KvTestDto dest = new KvTestDto();
+                    BeanUtils.copyProperties(source, dest);
+                    kvTestDtoList.add(dest);
+                });
+
+        return kvTestDtoList;
+    }
 }

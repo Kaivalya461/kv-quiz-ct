@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/mcq-test")
 @CrossOrigin("*")
@@ -28,5 +30,10 @@ public class McqTestController {
     @GetMapping("/test-id/{testId}")
     public ResponseEntity<KvTestDto> getTestDetails(@PathVariable String testId) {
         return ResponseEntity.ok(mcqTestService.getTestDetails(testId));
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<KvTestDto>> getAllTestDetails() {
+        return ResponseEntity.ok(mcqTestService.getAllTestDetails());
     }
 }
