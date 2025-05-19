@@ -17,11 +17,12 @@ export class ProgressComponent {
 
   testUsersDtoArray: TestUsersDto[] = [];
   usersProgress: UserProgressDto[] = [];
+  showTitle: boolean;
 
   constructor(
     private websocketService: WebsocketService
   ) {
-
+    this.showTitle = false;
   }
 
   ngOnInit(): void {
@@ -35,6 +36,7 @@ export class ProgressComponent {
           this.testUsersDtoArray = data; // Update the progress tracking object
           const filteredUsers = this.testUsersDtoArray.find(item => item.testId === this.mcqTestId)?.users || [];
           this.usersProgress = filteredUsers;
+          this.showTitle = true;
         },
         error: (err) => console.error("WebSocket error:", err),
         complete: () => console.warn("WebSocket connection closed"),

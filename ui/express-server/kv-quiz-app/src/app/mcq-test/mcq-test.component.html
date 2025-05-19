@@ -16,7 +16,7 @@
             </div>
             <div class="card score-card p-3" *ngIf="isTestFinished">
                 <h5>Your Score:</h5>
-                {{correctAnswers}}/{{totalQuestions}} ({{ userFinalScore }}%)
+                {{correctAnswers}}/{{totalQuestions}} ({{ userFinalScore | number:'1.2-2' }}%)
             </div>
         </div>
 

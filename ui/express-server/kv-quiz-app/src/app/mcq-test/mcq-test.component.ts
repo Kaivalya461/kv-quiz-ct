@@ -121,7 +121,7 @@ export class McqTestComponent {
     this.userFinalScore = (this.correctAnswers / this.totalQuestions) * 100;;
 
     // Update leaderboard
-    this.leaderboardService.addUserResult(this.username, this.userFinalScore);
+    // this.leaderboardService.addUserResult(this.username, this.userFinalScore);
     // Disable questions section
     this.isTestFinished = true;
     this.isTestFinishedEvent.emit(true); // Emit new value to parent
@@ -138,9 +138,9 @@ export class McqTestComponent {
     // Wait for few seconds, and redirect to /leaderboard
     setTimeout(() => {
       this.navigateToLeaderboardPage(this.mcqTestId);
-    }, 5000);
+    }, 4000);
 
-    alert(`Test Submitted! 🎉\nYour Score: ${this.correctAnswers}/${this.totalQuestions} (${this.userFinalScore.toFixed(2)}%)`);
+    // alert(`Test Submitted! 🎉\nYour Score: ${this.correctAnswers}/${this.totalQuestions} (${this.userFinalScore.toFixed(2)}%)`);
   }
 
   getTestFinishTime(minutesAhead: number) {
