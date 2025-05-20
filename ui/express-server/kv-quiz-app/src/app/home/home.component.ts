@@ -3,6 +3,7 @@ import { UserService } from '../service/user.service';
 import { FormsModule, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { JoinLiveTestPopupComponent } from '../join-live-test-popup/join-live-test-popup.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,8 @@ export class HomeComponent {
   userLoggedIn: boolean = false;
   showJoinLivePopup = false;
 
-  constructor(private userService: UserService
+  constructor(private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -48,5 +50,9 @@ export class HomeComponent {
 
   joinLiveTest() {
     this.showJoinLivePopup = true;
+  }
+
+  navigateToEditor() {
+    this.router.navigate(['/editor'], {});
   }
 }
