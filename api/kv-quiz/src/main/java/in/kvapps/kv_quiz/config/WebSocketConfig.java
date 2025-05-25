@@ -9,5 +9,6 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(new MyWebSocketHandler(), "/test-progress").setAllowedOrigins("*");
+        registry.addHandler(new EditorSyncWebSocketHandler(), "/editor-sync").setAllowedOrigins("*");
     }
 }
