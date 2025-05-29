@@ -2,7 +2,7 @@ package in.kvapps.kv_quiz.dto;
 
 import lombok.Data;
 
-import java.util.Objects;
+import java.util.Set;
 
 @Data
 public class EditorSyncUpdateEventDto {
@@ -23,4 +23,7 @@ public class EditorSyncUpdateEventDto {
     private int index;
     private String text;
     private int length;
+
+    // session details
+    private Set<String> activeUsers;
 }
