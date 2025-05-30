@@ -26,4 +26,5 @@ public class EditorSyncUpdateEventDto {
 
     // session details
     private Set<String> activeUsers;
+    private String initialContent;
 }
